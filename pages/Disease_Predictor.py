@@ -1,7 +1,7 @@
 import streamlit as st
 import joblib
 
-st.set_page_config(page_title="Disease Predictor", layout="centered")
+
 st.title("🩺 Disease Prediction from Symptoms")
 
 # Load the model
