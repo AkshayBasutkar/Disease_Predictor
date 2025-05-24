@@ -1,5 +1,7 @@
+!pip install joblib
+
 import streamlit as st
-# import joblib
+import joblib
 
 st.set_page_config(page_title="Disease Predictor", layout="centered")
 st.title("🩺 Disease Prediction from Symptoms")
