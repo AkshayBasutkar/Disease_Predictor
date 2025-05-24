@@ -86,7 +86,7 @@ SYMPTOMS_LIST = ['anxiety and nervousness', 'depression', 'shortness of breath',
 # User inputs
 age = st.number_input("Enter your age:", min_value=1, max_value=120, step=1)
 gender = st.selectbox("Select your gender:", ["Male", "Female"])
-selected_symptoms = st.multiselect("Select your symptoms:", SYMPTOMS_LIST)
+# selected_symptoms = st.multiselect("Select your symptoms:", SYMPTOMS_LIST)
 
 selected_symptoms = st.multiselect("Select your symptoms", SYMPTOMS_LIST)
 st.write("You selected:", selected_symptoms)
