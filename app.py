@@ -11,7 +11,7 @@ def load_model():
 
 model = load_model()
 
-SYMPTOMS_LIST = ['diseases', 'anxiety and nervousness', 'depression', 'shortness of breath', 'depressive or psychotic symptoms', 
+SYMPTOMS_LIST = ['anxiety and nervousness', 'depression', 'shortness of breath', 'depressive or psychotic symptoms', 
                  'sharp chest pain', 'dizziness', 'insomnia', 'abnormal involuntary movements', 'chest tightness', 
                  'palpitations', 'irregular heartbeat', 'breathing fast', 'hoarse voice', 'sore throat', 'difficulty speaking', 
                  'cough', 'nasal congestion', 'throat swelling', 'diminished hearing', 'lump in throat', 'throat feels tight',
