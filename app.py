@@ -1,5 +1,16 @@
 import streamlit as st
 
-st.set_page_config(page_title="Health Assistant", layout="centered")
-st.title("🩺 Welcome to Health Assistant App")
-st.markdown("Use the menu on the left to navigate through the features.")
+st.title("🩺 Disease Prediction & Diet Recommendations")
+
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Go to", ["Disease Predictor", "Diet Recommendations"])
+
+if page == "Disease Predictor":
+    # Import and run the disease predictor page code here
+    import pages.page1_disease_predictor as predictor
+    predictor.app()
+
+elif page == "Diet Recommendations":
+    # Import and run the diet recommendations page code here
+    import pages.page2_diet_recommendations as diet_page
+    diet_page.app()
