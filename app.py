@@ -88,6 +88,11 @@ age = st.number_input("Enter your age:", min_value=1, max_value=120, step=1)
 gender = st.selectbox("Select your gender:", ["Male", "Female"])
 selected_symptoms = st.multiselect("Select your symptoms:", SYMPTOMS_LIST)
 
+selected_symptoms = st.multiselect("Select your symptoms", symptoms)
+st.write("You selected:", selected_symptoms)
+st.write("Total selected:", len(selected_symptoms))
+
+
 # Submit
 if st.button("Predict Disease"):
     symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
