@@ -1,15 +1,15 @@
 import streamlit as st
-import joblib
+# import joblib
 
 st.set_page_config(page_title="Disease Predictor", layout="centered")
 st.title("🩺 Disease Prediction from Symptoms")
 
 # Load the model
-@st.cache_resource
-def load_model():
-    return joblib.load("disease_model.pkl")
+# @st.cache_resource
+# def load_model():
+#     return joblib.load("disease_model.pkl")
 
-model = load_model()
+# model = load_model()
 
 SYMPTOMS_LIST = [
     "Fever", "Cough", "Fatigue", "Headache", "Nausea",
