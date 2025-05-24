@@ -93,7 +93,7 @@ st.write("You selected:", selected_symptoms)
 st.write("Total selected:", len(selected_symptoms))
 
 
-Submit
+# Submit
 if st.button("Predict Disease"):
     symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
     gender_numeric = 1 if gender == "Male" else 0
