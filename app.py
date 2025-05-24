@@ -97,7 +97,7 @@ st.write("Total selected:", len(selected_symptoms))
 if st.button("Predict Disease"):
     symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
     gender_numeric = 1 if gender == "Male" else 0
-    input_vector = [age, gender_numeric] + symptom_vector
+    input_vector = symptom_vector
 
     try:
         prediction = model.predict([input_vector])[0]
