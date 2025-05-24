@@ -1,49 +1,35 @@
-# page1_predict_disease.py
 import streamlit as st
-import requests
-import pandas as pd
+import joblib
 
-# Define your symptoms list (you can expand this)
-SYMPTOMS_LIST = ["Fever", "Cough", "Fatigue", "Headache", "Nausea", "Sore Throat", "Runny Nose"]
+st.set_page_config(page_title="Disease Predictor", layout="centered")
+st.title("🩺 Disease Prediction from Symptoms")
 
-st.title("🧠 Disease Prediction")
+# Load the model
+@st.cache_resource
+def load_model():
+    return joblib.load("disease_model.pkl")
 
-# 1. Age Input
-age = st.number_input("Enter your age", min_value=0, max_value=120, step=1)
+model = load_model()
 
-# 2. Gender Selection
-gender = st.selectbox("Select your gender", ["Male", "Female"])
+SYMPTOMS_LIST = [
+    "Fever", "Cough", "Fatigue", "Headache", "Nausea",
+    "Sore Throat", "Runny Nose", "Muscle Pain", "Diarrhea", "Vomiting"
+]
 
-# 3. Symptom Selection using Checkboxes
-st.subheader("Select the symptoms you have:")
-selected_symptoms = []
-symptom_flags = {}
+# User inputs
+age = st.number_input("Enter your age:", min_value=1, max_value=120, step=1)
+gender = st.selectbox("Select your gender:", ["Male", "Female"])
+selected_symptoms = st.multiselect("Select your symptoms:", SYMPTOMS_LIST)
 
-# Dynamically show checkboxes
-for symptom in SYMPTOMS_LIST:
-    checked = st.checkbox(symptom)
-    selected_symptoms.append(symptom if checked else None)
-    symptom_flags[symptom] = 1 if checked else 0
-
-# 4. Submit Button
+# Submit
 if st.button("Predict Disease"):
-    # Create payload for API or model
-    input_data = {
-        "age": age,
-        "gender": gender.lower(),  # lowercase for consistency
-        **{symptom.lower().replace(" ", "_"): flag for symptom, flag in symptom_flags.items()}
-    }
+    symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
+    gender_numeric = 1 if gender == "Male" else 0
+    input_vector = [age, gender_numeric] + symptom_vector
 
     try:
-        # Replace the URL with your actual ML model API endpoint
-        # response = requests.post("http://localhost:8000/predict", json=input_data)
-        # prediction = response.json().get("prediction", "Unknown")
-
-        # Temporary placeholder logic
-        prediction = "Flu" if input_data.get("fever", 0) and input_data.get("cough", 0) else "Common Cold"
-
+        prediction = model.predict([input_vector])[0]
         st.success(f"✅ Predicted Disease: **{prediction}**")
-
     except Exception as e:
-        st.error("❌ Error occurred during prediction.")
+        st.error("Prediction failed.")
         st.exception(e)
