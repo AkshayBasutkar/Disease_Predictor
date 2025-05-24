@@ -93,15 +93,15 @@ st.write("You selected:", selected_symptoms)
 st.write("Total selected:", len(selected_symptoms))
 
 
-# Submit
-# if st.button("Predict Disease"):
-#     symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
-#     gender_numeric = 1 if gender == "Male" else 0
-#     input_vector = [age, gender_numeric] + symptom_vector
+Submit
+if st.button("Predict Disease"):
+    symptom_vector = [1 if symptom in selected_symptoms else 0 for symptom in SYMPTOMS_LIST]
+    gender_numeric = 1 if gender == "Male" else 0
+    input_vector = [age, gender_numeric] + symptom_vector
 
-#     try:
-#         prediction = model.predict([input_vector])[0]
-#         st.success(f"✅ Predicted Disease: **{prediction}**")
-#     except Exception as e:
-#         st.error("Prediction failed.")
-#         st.exception(e)
+    try:
+        prediction = model.predict([input_vector])[0]
+        st.success(f"✅ Predicted Disease: **{prediction}**")
+    except Exception as e:
+        st.error("Prediction failed.")
+        st.exception(e)
