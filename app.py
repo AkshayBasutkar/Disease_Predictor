@@ -1,7 +1,6 @@
 import streamlit as st
 st.set_page_config(page_title="Disease Predictor & Diet App", 
-                   layout="centered",
-                  initial_sidebar_state="expanded") 
+                   layout="centered") 
 st.title("🩺 Disease Prediction & Diet Recommendations")
 
 st.sidebar.title("Navigation")
